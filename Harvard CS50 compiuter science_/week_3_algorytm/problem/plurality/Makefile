@@ -1,0 +1,1 @@
+LDLIBS += -lcs50
