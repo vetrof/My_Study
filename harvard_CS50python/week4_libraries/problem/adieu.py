@@ -39,7 +39,7 @@ def text_gen(names):
 
     if n_name > 1:
         for name in names:
-            
+
             index = names.index(name)
             text = text + ' ' + name + ","
             if index == (n_name - 2):

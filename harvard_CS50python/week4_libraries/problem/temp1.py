@@ -1,27 +1,37 @@
-# output_text = names[0] + ", " + names[1] + ", " + names[2] + ", and " + names[3]
-# ETALON Adieu, adieu, to Liesl, Friedrich, Louisa, Kurt, Brigitta, Marta, and Gretl
+# Adieu, adieu, to Liesl
+# Adieu, adieu, to Liesl and Friedrich
+# Adieu, adieu, to Liesl, Friedrich, and Louisa
 
-list_name = ['Liesl','Friedrich','Louisa','Kurt','Brigitta','Marta','Gretl']
-# list_name = ['a']
-n_name = len(list_name)
-text = 'Adieu, adieu, to'
+import inflect
+p = inflect.engine()
 
-if n_name == 1:
-    text = text + list_name[0]
+# solution without using module inflect
+def main():
 
-if n_name > 1:
-    for name in list_name:
-        index = list_name.index(name)
-        text = text + ' ' + name + ","
-        if index ==  (n_name - 2):
-            text = text + ' and ' + list_name[index + 1]
-            print(text)
+    name_list = get_name()
+    # name_list = ['Liesl', 'Friedrich', 'Louisa', 'Kurt', 'Brigitta', 'Marta', 'Gretl']
+    output = text_gen(name_list)
+    print(f'Adieu, adieu, to {output}')
 
 
+def get_name():
+    name_list = []
+    while True:
+        try:
+            name = input('Name: ')
+        except EOFError:
+            print()
+            break
+        else:
+            name_list.append(name)
 
-# print(text)
+    return name_list
 
 
+def text_gen(names):
+    textout = p.join(names)
+    return textout
 
 
-
+if __name__ == '__main__':
+    main()
