@@ -24,6 +24,7 @@ def get_name():
             break
         else:
             name_list.append(name)
+            
     print()
     return name_list
 
