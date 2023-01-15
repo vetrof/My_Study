@@ -1,29 +1,27 @@
-# figlet
-# import module
-from pyfiglet import Figlet
+# output_text = names[0] + ", " + names[1] + ", " + names[2] + ", and " + names[3]
+# ETALON Adieu, adieu, to Liesl, Friedrich, Louisa, Kurt, Brigitta, Marta, and Gretl
 
-figlet = Figlet()
-import sys
-import random
+list_name = ['Liesl','Friedrich','Louisa','Kurt','Brigitta','Marta','Gretl']
+# list_name = ['a']
+n_name = len(list_name)
+text = 'Adieu, adieu, to'
 
-font_list = figlet.getFonts()
+if n_name == 1:
+    text = text + list_name[0]
 
-if len(sys.argv) == 1:
-    usr_input = input('Input: ')
-    rnd_font = random.choice(font_list)
-    print("Output: ")
-    print(Figlet(font=rnd_font).renderText(usr_input))
-elif len(sys.argv) == 3:
-    if (sys.argv[1] == '-f' or sys.argv[1] == '--font') and sys.argv[2] in font_list:
-        font = sys.argv[2]
-        usr_input = input('Input: ')
-        print("Output: ")
-        print(Figlet(font=font).renderText(usr_input))
-    else:
-        print("Invalid usage")
-        sys.exit
+if n_name > 1:
+    for name in list_name:
+        index = list_name.index(name)
+        text = text + ' ' + name + ","
+        if index ==  (n_name - 2):
+            text = text + ' and ' + list_name[index + 1]
+            print(text)
 
-else:
-    print("Invalid usage")
-    sys.exit
+
+
+# print(text)
+
+
+
+
 

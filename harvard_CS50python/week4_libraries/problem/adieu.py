@@ -10,9 +10,9 @@
 # solution without using module inflect
 def main():
     name_list = get_name()
-    text = text_gen(name_list)
-
-    print('Adieu, adieu, to', text)
+    # name_list = ['Liesl', 'Friedrich', 'Louisa', 'Kurt', 'Brigitta', 'Marta', 'Gretl']
+    output = text_gen(name_list)
+    print(f'Adieu, adieu, to{output}')
 
 
 def get_name():
@@ -21,30 +21,28 @@ def get_name():
         try:
             name = input('Name: ')
         except EOFError:
-            print()
             break
         else:
             name_list.append(name)
+    print()
     return name_list
 
 
 def text_gen(names):
-    output_text = ''
-    if len(names) == 1:
-        output_text = names[0]
-    elif len(names) == 2:
-        output_text = names[0] + " and " + names[1]
-    elif len(names) == 3:
-        output_text = names[0] + ", " + names[1] + ", and " + names[2]
-    elif len(names) == 4:
-        output_text = names[0] + ", " + names[1] + ", " + names[2] + ", and " + names[3]
-    elif len(names) == 5:
-        output_text = names[0] + ", " + names[1] + ", " + names[2] + ", " + names[3] + ", and " + names[4]
-    elif len(names) == 6:
-        output_text = names[0] + ", " + names[1] + ", " + names[2] + ", " + names[3] + ', ' + names[4] + ", and " + names[5]
-    elif len(names) == 7:
-        output_text = names[0] + ", " + names[1] + ", " + names[2] + ", " + names[3] + ', ' + names[4] + ', ' + names[5] + ", and " + names[6]
-    return output_text
+    text = ''
+    n_name = len(names)
+
+    if n_name == 1:
+        text = text + ' ' + names[0]
+        return text
+
+    if n_name > 1:
+        for name in names:
+            index = names.index(name)
+            text = text + ' ' + name + ","
+            if index == (n_name - 2):
+                text = text.rstrip(',') + ' and ' + names[index + 1]
+                return text
 
 
 if __name__ == '__main__':
