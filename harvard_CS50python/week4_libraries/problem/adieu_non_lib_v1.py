@@ -11,7 +11,6 @@
 def main():
     name_list = get_name()
     text = text_gen(name_list)
-
     print('Adieu, adieu, to', text)
 
 
