@@ -24,7 +24,7 @@ def get_name():
             break
         else:
             name_list.append(name)
-            
+
     print()
     return name_list
 
@@ -39,6 +39,7 @@ def text_gen(names):
 
     if n_name > 1:
         for name in names:
+            
             index = names.index(name)
             text = text + ' ' + name + ","
             if index == (n_name - 2):
