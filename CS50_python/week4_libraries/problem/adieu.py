@@ -7,9 +7,8 @@ p = inflect.engine()
 
 # solution without using module inflect
 def main():
-
     name_list = get_name()
-    # name_list = ['Liesl', 'Friedrich', 'Louisa', 'Kurt', 'Brigitta', 'Marta', 'Gretl']
+    # name_list = ['Liesl','Friedrich','Louisa','Kurt','Brigitta','Marta','Gretl']
     output = text_gen(name_list)
     print(f'Adieu, adieu, to {output}')
 
