@@ -1,6 +1,0 @@
-John
--2
-Paul
--1
-George
--4

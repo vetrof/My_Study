@@ -1,1 +1,0 @@
-The numbers stored in the pbnumbers.txt file are not actual PowerBall lottery numbers. The numbers are provided for educational purposes only.
