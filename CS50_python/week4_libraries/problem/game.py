@@ -1,4 +1,8 @@
 # Guessing Game
+# Harvard / cs50p / python
+# problem set week 4  https://cs50.harvard.edu/python/2022/psets/4/
+# Vitaly Vetrof / vetrof@gmail.com  / vetrof.com
+
 from random import randint
 from sys import exit
 
