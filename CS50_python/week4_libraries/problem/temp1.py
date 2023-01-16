@@ -1,7 +1,16 @@
+import requests
+import json
 
-n = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-x = 5
+response = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+json_file = response.json()
 
-match x:
-    case n:
-        print('match')
+# for dict in json_file:
+
+    # print(json_file[dict])
+
+print(json_file['bpi']['USD']['rate'])
+
+# /bpi/USD/rate
+
+
+
