@@ -21,15 +21,6 @@ import sys
 
 def main():
     print(convert(input("Hours: ")))
-    # time = convert('10:30 PM to 8:50 AM')
-    # time = convert('10 PM to 8:50 AM')
-    # time = convert('9 AM to 5 PM')
-    # time = convert('9:00 AM to 5:00 PM')
-    # time = convert('10 PM to 8 AM')
-
-    # time = convert('9:60 AM to 5:60 PM')
-    # time = convert('9 AM - 5 PM')
-    # time = convert('09:00 AM - 17:00 PM')
 
 
 def convert(s):
@@ -79,7 +70,7 @@ def convert(s):
         else:
             raise ValueError
 
-    except ValueError:
+    except IOError:
         print('error -1')
         sys.exit(1)
     # print('start_time', start_time)
