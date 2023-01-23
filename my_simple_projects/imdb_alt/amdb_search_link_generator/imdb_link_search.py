@@ -5,28 +5,25 @@
 import webbrowser
 
 # get user parameter search
-genres_user = input('genres: ')
-rating_user = input('rating: ')
-# votes_min_user = input('votes min: ')
-keyword_user = input('keywords: ')
+genres = '&genres=' + input('genres: ')
+rating = '&user_rating=' + input('rating: ') + ','
+votes_min = '&num_votes=' + input('votes min: ') + ','
+keywords = '&keywords=' + input('keywords: ')
 
-# temp test search area /
 # ////////////////////////////
+# temp test search area /
 # genres_user = 'crime,mystery'
 # rating_user = '7'
-votes_min_user = '5000'
+# votes_min_user = '5000'
 # keyword_user = ''
-# ///////////////////////////
 # \temp test search area
+# ///////////////////////////
 
 # create value
 base_link = 'https://www.imdb.com/search/title/?'
 title = '&title='
 title_type = '&title_type=' + 'feature'
-votes_min = '&num_votes=' + votes_min_user + ','
-user_rating_min = '&user_rating=' + rating_user + ','
-genres = '&genres=' + genres_user
-keywords = '&keywords=' + keyword_user
+
 view = '&view=simple'
 count = '&count=250'
 
@@ -35,7 +32,7 @@ count = '&count=250'
 search_link = base_link\
               + votes_min\
               + keywords\
-              + user_rating_min\
+              + rating\
               + genres\
               + view\
               + count
