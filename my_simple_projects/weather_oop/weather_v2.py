@@ -5,7 +5,7 @@ from Weather import Weather
 
 def main():
 
-    w = Weather.get_loc()  # get Location and create oject class Weather
+    w = Weather.get_loc('astana')  # get Location and create oject class Weather
 
     now = w.now()          # get NOW weather
     f_day0 = w.f_day(0)    # get forecast for today - index "0"
