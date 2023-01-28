@@ -6,10 +6,11 @@ class Wizard:
         self.name = name
 
 
-class Studend(Wizard):1
+class Studend(Wizard):
     def __init__(self, name, home):
         super().__init__(name)
         self.home = home
+
 
 
 class Professor(Wizard):

@@ -2,6 +2,7 @@
 import requests
 import json
 import time
+from bs4 import BeautifulSoup
 
 from colorama import init, Fore, Back, Style
 init(autoreset=True)
@@ -88,6 +89,24 @@ class Weather:
             color = ''
         print()
 
+    def sun_activity(self):
+        url = f'https://yandex.com.am/weather/?lat=55.75581741&lon=37.61764526'
+
+        # проверяем ответ сервера
+        response = requests.get(url)
+        # print(response)
+
+        # получаем исходный код
+        bs = BeautifulSoup(response.text, "lxml")
+        # print(bs)
+
+        # ищем по тегу и классу
+        temp = bs.find_all('div', 'sun-card__info-item')
+        # print('find rult',temp)
+        print(temp[1].text)
+        print()
+        # return temp[1].text
+
     @classmethod
     def print_day_forecast(cls, now, d, index):
         list_dict = []
@@ -97,69 +116,79 @@ class Weather:
         if index == 1:
             print('Forecast Tomorrow')
 
+        print(f"Time  temp like hum wind gust press  ")
+
         for i in d:
             list_dict.append(d[i])
             loc_hour = time.localtime().tm_hour
 
-            # print current weather into forecast range
-            if d[i]['hour'] <= loc_hour < ((d[i]['hour']) + 3) and d[i]['day'] == 0:
+            # create reset style for colorama lib
+            color_w = Style.RESET_ALL
+            color_g = Style.RESET_ALL
+            color_p = Style.RESET_ALL
+            color_h = Style.RESET_ALL
 
+            # todo pack code below in func
+            # color grade for forecast
+            # for wind
+            if d[i]['wind_kph'] > 35:
+                color_w = Fore.RED
+            elif d[i]['wind_kph'] > 25:
+                color_w = Fore.YELLOW
+            # for gust
+            if d[i]['gust_kph'] > 35:
+                color_g = Fore.RED
+            elif d[i]['gust_kph'] > 25:
+                color_g = Fore.YELLOW
+            # for pressure
+            if d[i]['pressure_mm'] > 770:
+                color_p = Fore.RED
+            elif d[i]['pressure_mm'] > 765:
+                color_p = Fore.RED
+
+            # NOT print forecast data if current hour == forecast
+            if loc_hour == d[i]['hour'] and d[i]['day'] == 0:
+                pass
+
+            else:
+                print(
+                    f"{d[i]['hour']:3}   {round(d[i]['temp_c']):3} "
+                    f" {round(d[i]['feelslike_c']):3}  {d[i]['humidity']:3}  {color_w}{round(d[i]['wind_kph'])} "
+                    f" {color_g}{round(d[i]['gust_kph']):3}   {color_p}{d[i]['pressure_mm']:3} "
+                    f" ")
+
+            # print current weather in forecast modile only today!!
+            # if d[i]['hour'] <= loc_hour < ((d[i]['hour']) + 3) and d[i]['day'] == 0:
+            if d[i]['hour'] <= loc_hour < (d[i]['hour'] + 3) and d[i]['day'] == 0:
+
+                # todo pack code below in func
                 # color current
-                # color for wind
+                # wind
                 if now['wind_kph'] > 35:
                     color_w = Fore.RED
                 elif now['wind_kph'] > 25:
                     color_w = Fore.YELLOW
-                # color for gust
+                # gust
                 if now['gust_kph'] > 35:
                     color_g = Fore.RED
                 elif now['gust_kph'] > 25:
                     color_g = Fore.YELLOW
-                # color for pressure
+                # pressure
                 if now['pressure_mmHg'] > 770:
                     color_p = Fore.RED
                 elif now['pressure_mmHg'] > 765:
                     color_p = Fore.RED
 
-                #print current weather
+                # print current weather
                 print('---------------------------------------')
                 print(
                     f"{now['localtime'][-5:]} {round(now['temp_c']):>3} "
                     f" {round(now['feelslike_c']):>3}{now['humidity']:>5} {color_w}{round(now['wind_kph']):>3}"
                     f"  {color_g}{round(now['gust_kph']):>3} {color_p}{now['pressure_mmHg']:>5} "
                     f"  ")
-                print(f"Time  temp like hum wind gust press  ")
                 print('---------------------------------------')
-                continue
 
-            color_w = Style.RESET_ALL
-            color_g = Style.RESET_ALL
-            color_p = Style.RESET_ALL
-            color_h = Style.RESET_ALL
 
-            # color for forecast
-            # color for wind
-            if d[i]['wind_kph'] > 35:
-                color_w = Fore.RED
-            elif d[i]['wind_kph'] > 25:
-                color_w = Fore.YELLOW
-            # color for gust
-            if d[i]['gust_kph'] > 35:
-                color_g = Fore.RED
-            elif d[i]['gust_kph'] > 25:
-                color_g = Fore.YELLOW
-            # color for pressure
-            if d[i]['pressure_mm'] > 770:
-                color_p = Fore.RED
-            elif d[i]['pressure_mm'] > 765:
-                color_p = Fore.RED
-
-            # print forecast data
-            print(
-                f"{d[i]['hour']:3}   {round(d[i]['temp_c']):3} "
-                f" {round(d[i]['feelslike_c']):3}  {d[i]['humidity']:3}  {color_w}{round(d[i]['wind_kph'])} "
-                f" {color_g}{round(d[i]['gust_kph']):3}   {color_p}{d[i]['pressure_mm']:3} "
-                f" ")
         print()
 
     @classmethod
