@@ -20,7 +20,7 @@ print(response)
 
 # получаем исходный код
 bs = BeautifulSoup(response.text,"lxml")
-# print(bs)
+print(bs)
 
 # ищем по тегу и классу
 temp = bs.find('span', 'temp__value temp__value_with-unit')
