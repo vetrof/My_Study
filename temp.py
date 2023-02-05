@@ -1,28 +1,16 @@
-# https://services.swpc.noaa.gov/text/3-day-forecast.txt
 
-import requests
-import re
+l = []
 
-def load_kp_index_forecast():
-    text = ''
-    resp = requests.get('https://services.swpc.noaa.gov/text/3-day-forecast.txt')
-    open('sw_k_for.txt', 'wb').write(resp.content)
+n = {'city': 'paris', 'temp': 234, 'hum': 66}
+l.append(n)
 
-    file = open('sw_k_for.txt')
-    n = file.readlines()
-    kp_for = {}
+n = {'city': 'surgut', 'temp': 4444, 'hum': 234}
+l.append(n)
 
-    flag = 0
-    x = 1
-    for i in n:
-        i = i.strip().split()
-        if '00-03UT' in i:
-            flag = 1
-        if flag == 1 and x < 9:
-            # print(i[0])
-            x += 1
-            kp_for[i[0]] = {'today': i[1], 'tomorrow': i[2], 'aftertomorrow': i[3]}
+n = {'city': 'moscoe', 'temp': 987, 'hum': 84839}
+l.append(n)
 
-    return kp_forecast
+x = {'info': l}
 
-load_kp_index_forecast()
+
+print(x)
