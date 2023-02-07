@@ -3,10 +3,16 @@ import tabulate
 
 
 class WeatherData:
-    def __init__(self, loc='astana'):
+    def __init__(self, loc):
         self.location = loc
-        self.search_link = (f'http://api.weatherapi.com/v1/forecast.json?key=df8a79d600db4388880121515232301&q={self.location}&days=2&aqi=no&alerts=no')
+        self.search_link = (f'http://api.weatherapi.com/v1/forecast.'
+                            f'json?key=df8a79d600db4388880121515232301'
+                            f'&q={self.location}&days=2&aqi=no&alerts=no')
+
         self.api_resp_w = requests.get(self.search_link).json()
+
+        if 'error' in self.api_resp_w:
+            raise ValueError('No matching location found.')
 
     @property
     def location(self):
@@ -25,7 +31,7 @@ class WeatherData:
         w_current['humidity'] = self.api_resp_w['current']['humidity']
         w_current['wind_kph'] = self.api_resp_w['current']['wind_kph']
         w_current['gust_kph'] = self.api_resp_w['current']['gust_kph']
-        w_current['pressure_mmHg'] = round(self.api_resp_w['current']['pressure_mb'] * 0.75006375541921)
+        w_current['pressure_mmHg'] = round(self.api_resp_w['current']['pressure_mb'] * 0.75)
         return w_current
 
     def load_forecast(self, day):
