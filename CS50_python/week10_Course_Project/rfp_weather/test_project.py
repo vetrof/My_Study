@@ -24,6 +24,20 @@ def test_print_current():
     assert project.print_m_now({'m_index': 7}) == 'm_index                          7'
 
 
+def test_get_status():
+    with pytest.raises(ValueError):
+        project.check_status_feel('')
+
+    with pytest.raises(ValueError):
+        project.check_status_feel('astana')
+
+    with pytest.raises(ValueError):
+        project.check_status_feel('9')
+
+    with pytest.raises(ValueError):
+        project.check_status_feel('-1')
+
+
 
 
 
