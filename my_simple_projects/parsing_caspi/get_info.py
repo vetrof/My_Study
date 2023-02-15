@@ -2,7 +2,7 @@ from requests_html import HTMLSession
 import pickle
 import time
 
-link_to_pickle_file = '2023_2_6_21_24_links_caspi_prod'
+link_to_pickle_file = '2023_2_15_15_32_links_caspi_prod'
 
 def main():
     link_list = unpickle_file(link_to_pickle_file)

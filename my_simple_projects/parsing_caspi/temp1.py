@@ -1,35 +1,26 @@
-import time
-from selenium import webdriver
-from bs4 import BeautifulSoup as bs
-import pickle
-
-# # load page
-# browser = webdriver.Chrome()
-# browser.get("https://kaspi.kz/shop/p/pelenka-tekstil-naja-673-1-sht-100h110-sm-108621923/?c=710000000#!/item")
-# source_data = browser.page_source
-
-# # save data to disc
-# with open(f'temptemp', 'wb') as file:
-#     pickle.dump(source_data, file)
-
-# load data from disc
-with open('temptemp', 'rb') as file:
-    source_data = pickle.load(file)
-
-soup = bs(source_data, 'html.parser')
+import json
 
 
-headring = soup.find_all('div', {'class':['item__price-once']})
-sellers = soup.find_all('div', {'class':['item__price-once']})
-price = soup.find_all('div', {'class':['item__price-once']})
-specifications = soup.find_all('dd', {'class':['specifications-list__spec-definition']})
+string = '{"matrix":[{"available":true,"selected":true,"productCode":"107227073","characteristic":{"type":"Clothes_Colour","title":"Цвет","id":"мультиколор","values":[{"value":"мультиколор"}],"primaryImage":{"small":"https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h90/h40/64574798987294/batik-120-23z-children-107227073-1jpg.jpg","medium":"https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h9f/h53/64574799183902/batik-120-23z-children-107227073-1jpg.jpg","large":"https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h2d/hd2/64574798626846/batik-120-23z-children-107227073-1jpg.jpg"}},"matrix":[{"available":true,"selected":true,"productCode":"106625286","characteristic":{"type":"batik--children-clothes-size-ru","title":"Размер","id":"110","values":[{"dimension":"RUS","value":"110"}]}},{"available":true,"selected":false,"productCode":"106625318","characteristic":{"type":"batik--children-clothes-size-ru","title":"Размер","id":"116","values":[{"dimension":"RUS","value":"116"}]}},{"available":false,"selected":false,"productCode":"106625320","characteristic":{"type":"batik--children-clothes-size-ru","title":"Размер","id":"122","values":[{"dimension":"RUS","value":"122"}]}}]}]}'
 
+script = json.loads(string)['matrix']
 
-for i in x2:
-    print(i.text)
+for s in script:
+    print('Цвет, доступ: ', s['characteristic']['id'], end=' / ')
+    print(s['available'])
+    for m in s['matrix']:
+        print('Размер, доступ: ', m['characteristic']['id'], end=' / ')
+        print(m['available'])
 
 
 
 
+# print('color:',script['matrix'][0]['characteristic']['id'])
+# for i in script['matrix'][0]['matrix']:
+#     print(i['available'])
+#     print(i['characteristic']['id'])
+#
 
 
+# /matrix/0/matrix/0/characteristic/id
+# /matrix/0/characteristic/id
