@@ -256,20 +256,20 @@ def print_k_index_forecast(k_forecast):
         color_afto = Style.RESET_ALL
 
         # color for k-index
-        if float(k_forecast[times]['today']) > K_RED_ZONE:
+        if float(k_forecast[times]['today']) >= K_RED_ZONE:
             color_t = Fore.RED
-        elif float(k_forecast[times]['today']) > K_YELLOW_ZONE:
+        elif float(k_forecast[times]['today']) >= K_YELLOW_ZONE:
             color_t = Fore.YELLOW
 
-        if float(k_forecast[times]['tomorrow']) > K_RED_ZONE:
-            color_t = Fore.RED
-        elif float(k_forecast[times]['tomorrow']) > K_YELLOW_ZONE:
-            color_t = Fore.YELLOW
+        if float(k_forecast[times]['tomorrow']) >= K_RED_ZONE:
+            color_to = Fore.RED
+        elif float(k_forecast[times]['tomorrow']) >= K_YELLOW_ZONE:
+            color_to = Fore.YELLOW
 
-        if float(k_forecast[times]['aftertomorrow']) > K_RED_ZONE:
-            color_t = Fore.RED
-        elif float(k_forecast[times]['aftertomorrow']) > K_YELLOW_ZONE:
-            color_t = Fore.YELLOW
+        if float(k_forecast[times]['aftertomorrow']) >= K_RED_ZONE:
+            color_afto = Fore.RED
+        elif float(k_forecast[times]['aftertomorrow']) >= K_YELLOW_ZONE:
+            color_afto = Fore.YELLOW
 
         print(
             f"{times}     {color_t}{k_forecast[times]['today']}   "
