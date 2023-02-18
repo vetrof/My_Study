@@ -58,7 +58,7 @@ I'm also working on optimizing and reducing code reuse.
 In the future, I plan to develop the project and make it a separate site and
 application.
 
-#### How do I use the program?
+### How do I use the program?
 Well, firstly - three times a day I open the program and give a description
 of my state of health for the accumulation of statistics.
 If I see red values of wind gusts, pressure or KP index - then on this day 
@@ -68,7 +68,7 @@ If you suffer from poor health due to weather factors - please take care
 not to experience physical exertion during this time, and if you need
 medication - take it with you.
 
-#### project.py
+### project.py
 The main program file with logic and functions responsible for printing to
 the command line with warning alerts through colorama
 
