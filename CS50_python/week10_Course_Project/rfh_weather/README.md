@@ -58,7 +58,7 @@ I'm also working on optimizing and reducing code reuse.
 In the future, I plan to develop the project and make it a separate site and
 application.
 
-####How do I use the program?
+#### How do I use the program?
 Well, firstly - three times a day I open the program and give a description
 of my state of health for the accumulation of statistics.
 If I see red values of wind gusts, pressure or KP index - then on this day 
@@ -68,34 +68,34 @@ If you suffer from poor health due to weather factors - please take care
 not to experience physical exertion during this time, and if you need
 medication - take it with you.
 
-####project.py
+#### project.py
 The main program file with logic and functions responsible for printing to
 the command line with warning alerts through colorama
 
-###weatherdata.py
+### weatherdata.py
 The file contains two classes, each of which is responsible for the weather
 on the ground and space weather, respectively. The classes have methods 
 that collect data via api or, as in the case of kp-index forecast,
 information is taken from a text file.
 
-###sw_k_for.txt
+### sw_k_for.txt
 Updated file with forecast of magnetic storms
 
-###get_selffeel_data.py
+### get_selffeel_data.py
 File with functions for collecting and recording data for statistical analysis.
 The data is written to the file data_ml/selffeel_data_vetrof@gmail.com.csv
 
-###link:
+### link:
 How geomagnetic activity affects cardiovascular disease:
 [https://ehjournal.biomedcentral.com/articles/10.1186/s12940-019-0516-0](https://ehjournal.biomedcentral.com/articles/10.1186/s12940-019-0516-0)
 
 What is meteopathy?:
 [https://meteoagent.com/weather-pains-meteoropathy](https://meteoagent.com/weather-pains-meteoropathy)
 
-###API:
+### API:
 Data for the formation of current values and forecast are obtained via the API:
 KP-Index from [https://www.swpc.noaa.gov](https://www.swpc.noaa.gov/)
 Weather data from [https://www.weatherapi.com/](https://www.weatherapi.com/)
 
-###email:
+### email:
 If you have any questions, you can write to me at vetrof@gmail.com
