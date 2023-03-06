@@ -1,24 +1,19 @@
-import re
+def pivotIndex(nums):
 
-tx = ''
-file = open('sw_k_for.txt')
-n = file.readlines()
+    left_summ = 0
+    right_sum = sum(nums)
 
+    for i in range(len(nums)):
+        right_sum = right_sum - nums[i]
 
-flag = 0
-for i in n:
-    if 'NOAA Kp' in i:
-        flag = 1
+        if right_sum == left_summ:
+            return i
 
-    if 'Rationale' in i:
-        flag = 0
-
-    if flag == 1:
-        print(i.strip())
-
-
-def load_kp_index_forecast():
-    ...
+        left_summ = left_summ + nums[i]
+    return -1
 
 
 
+nums = [1, 7, 3, 6, 5, 6]
+
+print(pivotIndex(nums))

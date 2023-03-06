@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% load humanize %}
+
+{% block html_title %}
+    Дом {{ house.name }}
+{% endblock %}
+
+{% block application %}
+    <div class="house-detail">
+        <h2 class="house-name">{{ house.name }} <span class="price">{{ house.price|intcomma }} руб.</span></h2>
+        <div class="house">
+
+
+            {% if house.photo %}
+                <img src="{{ house.photo.url }}" alt="{{ house.name }}">
+            {% endif %}
+
+
+            <div class="description">{{ house.description }}</div>
+        </div>
+
+        <div class="order">
+            <h2>Оставить заявку</h2>
+
+            {% if sended %}
+                Спасибо. Ваша заявка принята.
+            {% endif %}
+
+            <form action="" method="post" class="order-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Отправить заявку">
+            </form>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+
+{#    {{ house.images.all() }}#}
+
+    {% for image in house.images.all %}
+        <img src="{{image.image.url}}">
+    {% endfor %}
+
+{% endblock %}

@@ -44,7 +44,7 @@ def get_pages_links(source):
         else:
             links_prod += link_appender
 
-        time.sleep(1)
+        # time.sleep(1)
         num_page += 1
 
 
