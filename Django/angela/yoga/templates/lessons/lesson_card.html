@@ -1,0 +1,214 @@
+
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% load custom_template_tags %}
+
+    <title>{{ lessons.name }}</title>
+
+<!-- Page Content -->
+    <div class="live-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+{#              <h4>Live занятия</h4>#}
+{#              <h2>On line / Of line</h2>#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+              <h2>{{ lessons.name }}</h2>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{lessons.image.url}}" alt="">
+                <p></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>{{ lessons.short_info }}</h4>
+              <h10> {{ lessons.description }}</h10>
+                <div class="down-content">
+
+
+                {% if access %}
+                        <p></p>
+                        <h4>Этот урок вам доступен.</h4>
+                        <div class="container">
+                         </ul>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <video
+                          id="my-video"
+                          class="video-js"
+                          controls
+                          controlsList="nodownload"
+                          oncontextmenu="return false;"
+                          preload="auto"
+                          width="100%"
+                          height="auto"
+                          data-setup="{}"
+                          >
+<!--                            <source src="{% url 'stream' lessons.id %}" type="video/mp4"/>-->
+                                 <source src="{% static lessons.video_link  %}" type="video/mp4"/>
+<!--                            <source src="{% url 'stream' lessons.id %}" type="video/webm"/>-->
+                        </video>
+                        </div>
+                        </div>
+
+
+
+
+                {% else %}
+
+                    {% if lessons.free %}
+                            <p></p>
+                            <h4>Этот урок бесплатный.</h4>
+                            <h6>Для доступа к уроку - зарегистрируйтесь или войдите.</h6>
+                            <div class="align-items-center">
+                            <a href="{% url 'registration' %}" class="filled-button">Регистрация</a>
+                            </div>
+
+                    {% else %}
+
+                            {% if lessons.id in baskets_product_id %}
+                                    <p></p>
+                                    <a href="{% url 'cabinet' user.id %}"><h4>Урок уже в корзине</h4></a>
+
+                            {% else %}
+
+{#                                {{ lessons.id }}#}
+{#                                {{ baskets_product_id }}#}
+
+                                <div class="down-content">
+                                <p></p>
+                                <h6>Доступ к уроку: {{ lessons.price }} Руб.</h6>
+                                <div class="align-items-center">
+                                <a href="{% url 'basket_add' lessons.id  %}" class="filled-button">В корзину</a>
+
+                            {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+
+
+{#                {% else %}#}
+{#                        {% if lessons.free %}#}
+{#                            <p></p>#}
+{#                            <h4>Этот урок бесплатный.</h4>#}
+{#                            <h6>Для доступа к уроку - зарегистрируйтесь или войдите.</h6>#}
+{#                            <div class="align-items-center">#}
+{#                            <a href="{% url 'registration' %}" class="filled-button">Регистрация</a>#}
+{#                            </div>#}
+{#                        {% endif %}#}
+{#                {% endif %}#}
+
+{#                            {% if not user.is_authenticated %}#}
+{#                                <h6>Для доступа к уроку - зарегистрируйтесь или войдите.</h6>#}
+{#                                <div class="align-items-center">#}
+{#                                <a href="{% url 'registration' %}" class="filled-button">Регистрация</a>#}
+{#                                </div>#}
+
+
+
+
+{#                    {% if lessons.free %}#}
+{#                        <p></p>#}
+{#                        <h4>Этот урок бесплатный.</h4>#}
+{##}
+{#                            {% if not user.is_authenticated %}#}
+{#                                <h6>Для доступа к уроку - зарегистрируйтесь или войдите.</h6>#}
+{#                                <div class="align-items-center">#}
+{#                                <a href="{% url 'registration' %}" class="filled-button">Регистрация</a>#}
+{#                                </div>#}
+{#                            {% endif %}#}
+{##}
+{#                    {% else %}#}
+{#                        #}
+{#                        <p></p>#}
+{#                        <h4>Этот урок вы приобрели.</h4>#}
+{#                    #}
+
+
+{#                    {% endif %}#}
+{##}
+{##}
+{##}
+{##}
+{#                          <div class="container">#}
+{#          <video#}
+{#                          id="my-video"#}
+{#                          class="video-js"#}
+{#                          controls#}
+{#                          preload="auto"#}
+{#                          width="100%"#}
+{#                          height="auto"#}
+{#                          data-setup="{}"#}
+{#                          >#}
+{#                            <source src="{% url 'stream' lessons.id %}" type="video/mp4"/>#}
+{#                            <source src="{% url 'stream' lessons.id %}" type="video/webm"/>#}
+{#                     </video>#}
+{#        </div>#}
+{#      </div>#}
+
+
+
+
+
+{#                {% else %}#}
+{##}
+{##}
+{##}
+{#                  {% if lessons.id in baskets_product_id %}#}
+{#                      <p></p>#}
+{##}
+{#                      <a href="{% url 'cabinet' user.id %}"><h4>Урок уже в корзине</h4></a>#}
+{##}
+{#                      {% else %}#}
+{#                      <p></p>#}
+{#                    <div class="down-content">#}
+{#                  <h6>Доступ к уроку: {{ lessons.price }} Руб.</h6>#}
+{#                  <div class="align-items-center">#}
+{#                      <a href="{% url 'basket_add' lessons.id  %}" class="filled-button">В корзину</a>#}
+{##}
+{#                      {% endif %}#}
+{##}
+{##}
+{#                  </div>#}
+{##}
+{#                {% endif %}#}
+{#                </div>#}
+{##}
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

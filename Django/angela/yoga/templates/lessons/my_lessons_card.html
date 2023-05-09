@@ -1,0 +1,68 @@
+
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Content -->
+    <div class="live-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+{#              <h4>Live занятия</h4>#}
+{#              <h2>On line / Of line</h2>#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{ lessons.name }}</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{lessons.image.url}}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>{{ lessons.short_info }}</h4>
+
+              <h10> {{ lessons.description }}</h10>
+
+
+                <div class="down-content">
+                    <p></p>
+
+                    {% for i in pay_user %}
+                      {% if lessons.id == i.lesson.id %}
+                          <a href="#"><h4>{{ lessons.video_link}}</h4></a>
+                      {% endif %}
+
+                  {% endfor %}
+
+
+              </div>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+{% endblock %}

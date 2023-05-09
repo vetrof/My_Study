@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fa1c22a2-334a-4720-bbb7-9a8e5a438beb" name="store-server" url="http://188.68.222.142">
+        <fileTransfer rootFolder="/home/vetrof" accessType="SFTP" host="188.68.222.142" port="22" sshConfigId="d8e5ad49-9811-4e20-9e9f-827595187fec" sshConfig="vetrof@188.68.222.142:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="30000" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

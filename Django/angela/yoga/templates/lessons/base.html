@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{#      <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>#}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+{#    <title>Уроки по йоге</title>#}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<!--
+
+TemplateMo 546 Sixteen Clothing
+
+https://templatemo.com/tm-546-sixteen-clothing
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static "assets/css/fontawesome.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/templatemo-sixteen.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/owl.css" %}">
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+{#    <div id="preloader">#}
+{#        <div class="jumper">#}
+{#            <div></div>#}
+{#            <div></div>#}
+{#            <div></div>#}
+{#        </div>#}
+{#    </div>#}
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}"><h2>yoga <em>angie</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+
+{#                {% if request.path == '/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+{#                <a class="nav-link" href="{% url 'index' %}">Главная</a>#}
+{#              </li>#}
+
+
+{#                <li class="nav-item active">#}
+{#                <a class="nav-link" href="{% url 'lessons' %}">Сайт в разработке!!!</a>#}
+{#                 </li>#}
+
+
+
+{#                {% if request.path == '/lessons/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'lessons' %}">Уроки</a>
+              </li>
+
+
+            {#                {% if request.path == '/free_lessons/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'free_lessons' %}">Бесплатные</a>
+              </li>
+
+{#                {% if request.path == '/live_lessons/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'live_lessons' %}">On Line</a>
+              </li>
+
+
+
+
+{#                {% if request.path == '/about/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">Обо мне</a>
+              </li>
+
+{#                {% if request.path == '/contacts/' %} <li class="nav-item active"> {% else %} <li class="nav-item"> {% endif %}#}
+{#                <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>#}
+{#              </li>#}
+
+                <li class="nav-item">
+                <a class="nav-link">|</a>
+              </li>
+
+
+                 {% if user.is_authenticated %}
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'cabinet' user.id %}">Корзина</a>
+              </li>
+
+                {% endif %}
+
+
+{#            {% if user.is_authenticated %}#}
+{#             <li class="nav-item">#}
+{#                <a class="nav-link" href="{% url 'orders_list' %}">Заказы</a>#}
+{#              </li>#}
+{#            {% endif %}#}
+
+
+            {% if user.is_authenticated %}
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'my_lessons' %}">Мои уроки</a>
+              </li>
+            {% endif %}
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% if user.is_authenticated %} {% url 'logout' %}">Выход</a> {% else %} {% url 'login' %}">Вход</a> {% endif %}
+              </li>
+
+
+
+            {% if user.is_superuser or user.is_staff %}
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin:index' %}">🗝</a>
+              </li>
+            {% endif %}
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <!-- Page Content -->
+{% block content %}
+
+{% endblock %}
+<!-- 
+<footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
+
+            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{% static "assets/js/custom.js" %}"></script>
+    <script src="{% static "assets/js/owl.js" %}"></script>
+    <script src="{% static "assets/js/slick.js" %}"></script>
+    <script src="{% static "assets/js/isotope.js" %}"></script>
+    <script src="{% static "assets/js/accordions.js" %}"></script>
+
+
+    <script language = "text/Javascript">
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+
+
+     <div class="happy-clients">
+
+    </div>
+
+
+
+
+
+
+  <!-- Footer -->
+    <a></a>
+    <a></a>
+  <footer
+          class="text-center text-lg-start text-black"
+          style="background-color: #efefef"
+          >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+               Йога для всех
+            </h6>
+            <p>
+              Любите ли вы йогу, как любим её мы?.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Уроки</h6>
+            <p>
+              <a class="text-black">Йога</a>
+            </p>
+            <p>
+              <a class="text-black">Медитации</a>
+            </p>
+            <p>
+              <a class="text-black">Самомассаж</a>
+            </p>
+            <p>
+              <a class="text-black">Гармония</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Ссылки
+            </h6>
+            <p>
+              <a class="text-black">Youtube</a>
+            </p>
+            <p>
+              <a class="text-black">VK</a>
+            </p>
+            <p>
+              <a class="text-black">OK</a>
+            </p>
+
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Контакты</h6>
+            <p><i class="fas  mr-3"></i> Санкт-Петербург</p>
+            <p><i class="fas  mr-3"></i> info@yogangie.com</p>
+
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <!-- Copyright -->
+            <div class="p-3">
+              © 2023 Copyright:
+              <a class="text-black" href="https://vetrof.com/"
+                 >vetrof.com</a
+                >
+            </div>
+            <!-- Copyright -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <!-- Facebook -->
+{#            <a#}
+{#               class="btn btn-outline-light btn-floating m-1"#}
+{#               class="text-black"#}
+{#               role="button"#}
+{#               ><i class="fab fa-facebook-f"></i#}
+{#              ></a>#}
+{##}
+{#            <!-- Twitter -->#}
+{#            <a#}
+{#               class="btn btn-outline-light btn-floating m-1"#}
+{#               class="text-white"#}
+{#               role="button"#}
+{#               ><i class="fab fa-twitter"></i#}
+{#              ></a>#}
+{##}
+{#            <!-- Google -->#}
+{#            <a#}
+{#               class="btn btn-outline-light btn-floating m-1"#}
+{#               class="text-black"#}
+{#               role="button"#}
+{#               ><i class="fab fa-google"></i#}
+{#              ></a>#}
+{##}
+{#            <!-- Instagram -->#}
+{#            <a#}
+{#               class="btn btn-outline-light btn-floating m-1"#}
+{#               class="text-black"#}
+{#               role="button"#}
+{#               ><i class="fab fa-instagram"></i#}
+{#              ></a>#}
+{#          </div>#}
+          <!-- Grid column -->
+        </div>
+      </section>
+      <!-- Section: Copyright -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+  <!-- Footer -->
+{#</div>#}
+<!-- End of .container -->
+
+
+
+  </body>
+
+</html>
+
+
+

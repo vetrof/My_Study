@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:30}" host="188.68.222.142" id="d8e5ad49-9811-4e20-9e9f-827595187fec" port="22" nameFormat="DESCRIPTIVE" username="vetrof" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

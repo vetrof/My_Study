@@ -1,0 +1,138 @@
+
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Живые занятия по йоге</title>
+
+
+<!-- Page Content -->
+    <div class="page-heading live-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>Live занятия</h4>
+              <h2>On line / Of line</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Живые занятия</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{% static 'assets/images/live_lesson_foto1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>Занятие онлайн или в записи?</h4>
+              <p>Живые занятия онлайн становятся все более популярными среди любителей йоги, и это не удивительно! По сравнению с записанными уроками, живые занятия имеют ряд преимуществ, которые мы хотели бы поделиться с вами:
+
+1. Интерактивность: на живом занятии вы можете общаться с инструктором и задавать ему вопросы. Это позволяет лучше понимать и выполнять асаны, а также получать индивидуальные рекомендации и корректировки.
+
+2. Мотивация: живой инструктор может поддерживать вас во время занятий, поощрять к увеличению нагрузки и постановке новых целей. Это помогает вам сохранять мотивацию, что часто бывает сложно при занятиях с записью.
+
+3. Подход к каждому: живой инструктор наблюдает за вашими движениями и может предложить индивидуальный подход в зависимости от ваших потребностей и физической подготовки. Записанные уроки не могут предложить такую персонализацию.
+</p>
+{#              <ul class="social-icons">#}
+{#                <li><a href="#"><i class="fa fa-vk"></i></a></li>#}
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="send-message">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Напишите мне</h2>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="contact-form">
+              <form id="contact" action="" method="post">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <fieldset>
+                      <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <fieldset>
+                      <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <fieldset>
+                      <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+{#          <div class="col-md-4">#}
+{#            <ul class="accordion">#}
+{#              <li>#}
+{#                  <a>Accordion Title One</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Second Title Here</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Accordion Title Three</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Fourth Accordion Title</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#            </ul>#}
+{#          </div>#}
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock %}

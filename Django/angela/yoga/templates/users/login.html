@@ -1,0 +1,126 @@
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<title>Вход</title>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- FontAwesome script -->
+<script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
+
+<div class="col-md-12">
+            <div class="section-heading">
+              <h2> </h2>
+              <a href="{% url 'lessons' %}">   <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+
+    <main>
+
+
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+
+                  {% if messages or form.non_field_errors %}
+
+                        <div class="alert {% if messages %} alert-success {% else %} alert-warning {% endif %}
+                                alert-dismissible fade show" role="alert"
+                             style="margin-top: 50px;">
+
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+
+                            {% else %}
+                                {{ form.non_field_errors }}
+                            {% endif %}
+
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        {% endif %}
+
+
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Вход</h3>
+                            </div>
+                            <div class="card-body">
+
+
+
+                                <form action="{% url 'login' %}" method="post">
+                                    {% csrf_token %}
+
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="{{ form.username.id_for_label }}">Ваш логин</label>
+                                        {{ form.username }}
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="{{ form.password.id_for_label }}">Пароль</label>
+                                        {{ form.password }}
+
+                                    </div>
+
+
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+{#                                        <a class="small" href="#">Забыли пароль?</a>#}
+                                        <input class="btn btn-primary" type="submit" value="Войти">
+                                    </div>
+
+
+{#                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">#}
+{#                                        <a href="#">#}
+{#                                            <i class="fab fa-google fa-2x" style="color: #d9503e;"></i>#}
+{#                                        </a>#}
+{#                                        <a href="#">#}
+{#                                            <i class="fab fa-vk fa-2x" style="color: #4a658b;"></i>#}
+{#                                        </a>#}
+{#                                        <a href="#">#}
+{#                                            <i class="fab fa-github fa-2x" style="color: #303030;"></i>#}
+{#                                        </a>#}
+{#                                        <a href="#">#}
+{#                                            <i class="fab fa-facebook fa-2x" style="color: #405794;"></i>#}
+{#                                        </a>#}
+{#                                    </div>#}
+
+{#                                    <input type="hidden" name="next" value="{{ request.GET.next }}" />#}
+{#                                        <button type="submit">Login</button>#}
+
+
+                                </form>
+
+
+
+
+
+{##}
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="small"><a href="{% url 'registration' %}">Нужен аккаунт? Зарегистрируйся!</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e46e32dd-9866-44ec-9f26-05a20b9516cb" name="yoga_sever">
+        <fileTransfer rootFolder="/home/vetrof" accessType="SFTP" host="80.249.147.21" port="22" sshConfigId="4b62f5e4-9352-48d0-b563-782a06830278" sshConfig="vetrof@80.249.147.21:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="30000" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,61 @@
+
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<title>Мои уроки по йоге</title>
+
+ <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+{#              <h4>новый опыт</h4>#}
+{#              <h2>новое состояние</h2>#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Category list -->
+    <div class="products">
+      <div class="container">
+        <div class="row">
+
+        <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Мои уроки </h2>
+
+            </div>
+          </div>
+
+            <!-- ListView -->
+            {% for course in object_list %}
+
+          <div class="col-md-3">
+            <div class="product-item">
+              <a href="{% url 'lessons_card' course.lesson.id %}"><img src="{{course.lesson.image.url}}" alt=""></a>
+              <div class="down-content">
+                  <a href="{% url 'lessons_card' course.lesson.id %}"><h4>{{ course.lesson.name}}</h4></a>
+                  <p></p>
+                  <h8>{{ course.id_lesson }}</h8>
+                  <p></p>
+
+              </div>
+            </div>
+          </div>
+
+            {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

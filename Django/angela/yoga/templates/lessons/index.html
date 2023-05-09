@@ -1,0 +1,193 @@
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <title>Уроки по йоге</title>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner header-text">
+      <div class="owl-banner owl-carousel">
+        <div class="banner-item-01">
+          <div class="text-content">
+            <h4>Раскрой своё тело</h4>
+            <h2>Раскрой себя</h2>
+          </div>
+        </div>
+        <div class="banner-item-02">
+          <div class="text-content">
+            <h4>Flash Deals</h4>
+            <h2>Get your best products</h2>
+          </div>
+        </div>
+        <div class="banner-item-03">
+          <div class="text-content">
+            <h4>Last Minute</h4>
+            <h2>Grab last minute deals</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+
+
+
+        <!-- about -->
+    <div class="best-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Внимание! Сайт работает в тестовом режиме!</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>Почему именно наши уроки?</h4>
+              <p><a rel="nofollow" href="{% url 'lessons' %}" target="_parent">Наши видеоуроки</a>  являются высококачественными продуктами, созданными опытными преподавателями йоги, и предназначены для всех уровней подготовки. В них используются понятные и наглядные объяснения и демонстрации, что облегчает понимание и повторение упражнений для начинающих йогов, а также предлагает более сложные варианты для более опытных практикующих. Не забывайте, что от практики йоги не только улучшается физическое состояние, но и улучшается психологическое состояние, так как это духовная практика, помогающая находить внутреннюю гармонию и спокойствие.</p>
+              <ul class="featured-list">
+                <li><a href="#">Качественная сьемка</a></li>
+                <li><a href="#">Дипломированные тренеры</a></li>
+                <li><a href="#">Понимание анатомии и медицинские знания</a></li>
+                <li><a href="#">Низкая стоимость доступа</a></li>
+                <li><a href="#">Покупка - навсегда!</a></li>
+              </ul>
+              <a href="about.html" class="filled-button">Обо мне</a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{% static "assets/images/index_foto1.jpg" %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Новые уроки по йоге: </h2>
+              <a href="{% url 'lessons' %}"> Все уроки <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+
+
+            <!-- ListView -->
+            {% for course in object_list %}
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <a href="{% url 'lessons_card' course.id %}"><img src="{{course.image.url}}" alt=""></a>
+              <div class="down-content">
+                  <h6>{{ course.price }} Руб.</h6>
+                  <a href="{% url 'lessons_card' course.id %}"><h4>{{ course.name}}</h4></a>
+                  <p>{{ course.short_info }}</p>
+{#                  <h8>{{ course.category }}</h8>#}
+{#                  <p></p>#}
+{#                  <div class="align-items-center">#}
+{#                      <a href="{% url 'basket_add' course.id  %}" class="filled-button">В корзину</a>#}
+{#                  </div>#}
+              </div>
+            </div>
+          </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% if not user.is_authenticated %}
+
+    <div class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <div class="row">
+                <div class="col-md-8">
+                  <h4>Как получить доступ к <em>бесплатным</em> и платным урокам ?</h4>
+                  <p>Поздравляем! Вам уже доступны <em> все бесплатные уроки!</em>
+                      Просто перейдите в меню сайта на страницу "Бесплатно"
+                      Для просмотра потребуется проста регистрация.</p>
+                </div>
+                <div class="col-md-4">
+                  <a href="{% url 'login'  %}" class="filled-button">Регистрация</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endif %}
+
+
+
+
+{#    <div class="send-message">#}
+{#      <div class="container">#}
+{#        <div class="row">#}
+{#          <div class="col-md-12">#}
+{#            <div class="section-heading">#}
+{#              <h2>Частые вопросы:</h2>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-md-8">#}
+{#            <div class="contact-form">#}
+{#              #}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-md-10">#}
+{#            <ul class="accordion">#}
+{#              <li>#}
+{#                  <a>Accordion Title One</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Second Title Here</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Accordion Title Three</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#              <li>#}
+{#                  <a>Fourth Accordion Title</a>#}
+{#                  <div class="content">#}
+{#                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>#}
+{#                  </div>#}
+{#              </li>#}
+{#            </ul>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+
+
+
+
+
+
+{% endblock %}
+
+

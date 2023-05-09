@@ -1,0 +1,117 @@
+
+{% extends 'lessons/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Все уроки по йоге</title>
+
+ <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>новый опыт</h4>
+              <h2>новое состояние</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Category list -->
+    <div class="products">
+      <div class="container">
+        <div class="row">
+
+        <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Все уроки по йоге:</h2>
+
+            </div>
+          </div>
+
+            <!-- ListView -->
+            {% for course in object_list %}
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <a href="{% url 'lessons_card' course.id %}"><img src="{{course.image.url}}" alt=""></a>
+              <div class="down-content">
+                  <h6>{{ course.price }} Руб.</h6>
+                  <a href="{% url 'lessons_card' course.id %}"><h4>{{ course.name}}</h4></a>
+                  <p>{{ course.short_info }}</p>
+                  <h8>{{ course.category }}</h8>
+                  <p></p>
+
+           {% if course.id in pay_lesson_id %}
+
+               <a href="{% url 'my_lessons' %}"><h4>этот урок вы уже приобрели</h4></a>
+
+               {% else %}
+
+           {% if course.id in baskets_product_id %}
+               <a href="{% url 'cabinet' user.id %}"><h4>Урок уже в корзине</h4></a>
+
+           {% else %}
+
+                           {% if course.free %}
+                                    <div class="align-items-center">
+                                      <a href="{% url 'lessons_card' course.id %}" class="filled-button">Бесплатно</a>
+                                  </div>
+
+                           {% else %}
+
+                            <p></p>
+                          <div class="align-items-center">
+                              <a href="{% url 'basket_add' course.id  %}" class="filled-button">В корзину</a>
+                          </div>
+
+                   {% endif %}
+           {%  endif %}
+
+
+              {% endif %}
+
+              </div>
+            </div>
+          </div>
+
+            {% endfor %}
+
+
+        <!-- paginator -->
+        {% if is_paginated %}
+
+          <div class="col-md-12">
+            <ul class="pages">
+                {% if  page_obj.has_previous %}
+                <li><a href="{% if page_obj.has_previous %} ?page={{ page_obj.previous_page_number }} {% else %} # {% endif %} "><i class="fa fa-angle-double-left"></i></a></li>
+                {% endif %}
+
+                {%  for page in paginator.page_range %}
+                    <li {% if page_obj.number == page %} class="active" {% else %}  {% endif %} ><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+
+                {% if  page_obj.has_next %}
+                <li><a href="{% if page_obj.has_next %} ?page={{ page_obj.next_page_number }} {% else %} # {% endif %}"><i class="fa fa-angle-double-right"></i></a></li>
+                {% endif %}
+
+            </ul>
+          </div>
+
+        {% endif %}
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
