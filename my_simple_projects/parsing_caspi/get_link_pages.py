@@ -1,13 +1,9 @@
 from requests_html import HTMLSession
 import pickle
 import time
-# import requests
-# from bs4 import BeautifulSoup as bs
-# import pandas as pd
 
 # ссылка без ?page=
 source_link = 'https://kaspi.kz/shop/search/?text&q=%3Acategory%3ACategories%3AallMerchants%3ABublgum&sort=relevance&filteredByCategory=false'
-
 
 def main():
     links = get_pages_links(source_link)
@@ -43,10 +39,8 @@ def get_pages_links(source):
             return links_prod
         else:
             links_prod += link_appender
-
         # time.sleep(1)
         num_page += 1
-
 
 def pickle_links(links):
     t = time.localtime()
